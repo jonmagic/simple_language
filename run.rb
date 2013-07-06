@@ -1,6 +1,8 @@
 require_relative "big_step"
 require_relative "small_step"
 
+require_relative "parser"
+
 
 list = []
 list << {:statement => Add.new(Multiply.new(Number.new(1), Number.new(2)), Multiply.new(Number.new(3), Number.new(4)))}
@@ -26,7 +28,16 @@ list << {
   :environment => {:x => Number.new(1)}
 }
 
+parse_tree = SimpleParser.new.parse("while (x < 5) { x = x * 3 }")
+list << {
+  :statement   => parse_tree.to_ast,
+  :environment => {:x => Number.new(1)}
+}
+
+
+
 list.each do |item|
   Machine.new(item[:statement], item[:environment]).run
   puts "Big step result: #{item[:statement].evaluate(item[:environment])}"
 end
+
