@@ -8,6 +8,7 @@ require_relative "less_than"
 require_relative "machine"
 require_relative "multiply"
 require_relative "number"
+require_relative "sequence"
 require_relative "variable"
 
 list = []
@@ -24,6 +25,10 @@ list << {
 list << {
   :statement   => If.new(Variable.new(:x), Assign.new(:y, Number.new(1)), Assign.new(:y, Number.new(2))),
   :environment => {:x => Boolean.new(true)}
+}
+list << {
+  :statement   => Sequence.new(Assign.new(:x, Add.new(Number.new(1), Number.new(1))), Assign.new(:y, Add.new(Variable.new(:x), Number.new(3)))),
+  :environment => {}
 }
 
 list.each do |item|
