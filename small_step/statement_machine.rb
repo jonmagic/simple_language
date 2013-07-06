@@ -5,10 +5,10 @@ class StatementMachine < Struct.new(:statement, :environment)
 
   def run
     while statement.reducible?
-      puts "#{statement}, #{environment}"
+      puts "Small step result: #{statement}, #{environment}"
       step
     end
 
-    puts "#{statement}, #{environment}"
+    puts "Small step result: #{statement}, #{environment}"
   end
 end

@@ -5,10 +5,10 @@ class ExpressionMachine < Struct.new(:expression, :environment)
 
   def run
     while expression.reducible?
-      puts expression
+      puts "Small step result: #{expression}"
       step
     end
 
-    puts expression
+    puts "Small step result: #{expression}"
   end
 end
