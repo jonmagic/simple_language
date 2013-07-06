@@ -1,12 +1,7 @@
-class Assign < Struct.new(:name, :expression)
-  def to_s
-    "#{name} = #{expression}"
-  end
+require_relative "../syntax/assign"
+require_relative "do_nothing"
 
-  def inspect
-    "<<#{self}>>"
-  end
-
+class Assign
   def reducible?
     true
   end

@@ -1,12 +1,7 @@
-class If < Struct.new(:condition, :consequence, :alternative)
-  def to_s
-    "if (#{condition}) { #{consequence} } else { #{alternative} }"
-  end
+require_relative "../syntax/if"
+require_relative "boolean"
 
-  def inspect
-    "<<#{self}>>"
-  end
-
+class If
   def reducible?
     true
   end

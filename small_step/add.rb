@@ -1,12 +1,7 @@
-class Add < Struct.new(:left, :right)
-  def to_s
-    "#{left} + #{right}"
-  end
+require_relative "../syntax/add"
+require_relative "number"
 
-  def inspect
-    "<<#{self}>>"
-  end
-
+class Add
   def reducible?
     true
   end

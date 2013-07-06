@@ -1,12 +1,7 @@
-class LessThan < Struct.new(:left, :right)
-  def to_s
-    "#{left} < #{right}"
-  end
+require_relative "../syntax/multiply"
+require_relative "number"
 
-  def inspect
-    "<<#{self}>>"
-  end
-
+class Multiply
   def reducible?
     true
   end
@@ -17,7 +12,7 @@ class LessThan < Struct.new(:left, :right)
     elsif right.reducible?
       self.class.new(left, right.reduce(environment))
     else
-      Boolean.new(left.value < right.value)
+      Number.new(left.value * right.value)
     end
   end
 end

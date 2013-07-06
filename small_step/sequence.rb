@@ -1,12 +1,7 @@
-class Sequence < Struct.new(:first, :second)
-  def to_s
-    "#{first}; #{second}"
-  end
+require_relative "../syntax/sequence"
+require_relative "do_nothing"
 
-  def inspect
-    "<<#{self}>>"
-  end
-
+class Sequence
   def reducible?
     true
   end

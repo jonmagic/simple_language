@@ -6,12 +6,4 @@ class Variable < Struct.new(:name)
   def inspect
     "<<#{self}>>"
   end
-
-  def reducible?
-    true
-  end
-
-  def reduce(environment)
-    environment[name]
-  end
 end

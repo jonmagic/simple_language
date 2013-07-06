@@ -1,24 +1,26 @@
 require "pry"
-require_relative "add"
-require_relative "assign"
-require_relative "boolean"
-require_relative "do_nothing"
-require_relative "if"
-require_relative "less_than"
-require_relative "machine"
-require_relative "multiply"
-require_relative "number"
-require_relative "sequence"
-require_relative "variable"
-require_relative "while"
+require_relative "small_step/add"
+require_relative "small_step/assign"
+require_relative "small_step/boolean"
+require_relative "small_step/do_nothing"
+require_relative "small_step/expression_machine"
+require_relative "small_step/if"
+require_relative "small_step/less_than"
+require_relative "small_step/machine"
+require_relative "small_step/multiply"
+require_relative "small_step/number"
+require_relative "small_step/sequence"
+require_relative "small_step/statement_machine"
+require_relative "small_step/variable"
+require_relative "small_step/while"
 
 list = []
-# list << {:statement => Add.new(Multiply.new(Number.new(1), Number.new(2)), Multiply.new(Number.new(3), Number.new(4)))}
-# list << {:statement => LessThan.new(Number.new(5), Add.new(Number.new(2), Number.new(2)))}
-# list << {
-#   :statement  => Add.new(Variable.new(:x), Variable.new(:y)),
-#   :environment => {:x => Number.new(3), :y => Number.new(4)}
-# }
+list << {:statement => Add.new(Multiply.new(Number.new(1), Number.new(2)), Multiply.new(Number.new(3), Number.new(4)))}
+list << {:statement => LessThan.new(Number.new(5), Add.new(Number.new(2), Number.new(2)))}
+list << {
+  :statement  => Add.new(Variable.new(:x), Variable.new(:y)),
+  :environment => {:x => Number.new(3), :y => Number.new(4)}
+}
 list << {
   :statement   => Assign.new(:x, Add.new(Variable.new(:x), Number.new(1))),
   :environment => {:x => Number.new(2)}

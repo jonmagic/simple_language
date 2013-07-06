@@ -1,12 +1,9 @@
-class While < Struct.new(:condition, :body)
-  def to_s
-    "while (#{condition}) { #{body} }"
-  end
+require_relative "../syntax/while"
+require_relative "if"
+require_relative "do_nothing"
+require_relative "sequence"
 
-  def inspect
-    "<<#{self}>>"
-  end
-
+class While
   def reducible?
     true
   end
