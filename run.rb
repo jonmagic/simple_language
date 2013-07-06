@@ -1,4 +1,3 @@
-require "pry"
 require_relative "small_step/add"
 require_relative "small_step/assign"
 require_relative "small_step/boolean"
