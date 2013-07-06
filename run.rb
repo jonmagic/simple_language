@@ -3,6 +3,7 @@ require_relative "add"
 require_relative "assign"
 require_relative "boolean"
 require_relative "do_nothing"
+require_relative "if"
 require_relative "less_than"
 require_relative "machine"
 require_relative "multiply"
@@ -17,8 +18,12 @@ list = []
 #   :environment => {:x => Number.new(3), :y => Number.new(4)}
 # }
 list << {
-  :statement  => Assign.new(:x, Add.new(Variable.new(:x), Number.new(1))),
+  :statement   => Assign.new(:x, Add.new(Variable.new(:x), Number.new(1))),
   :environment => {:x => Number.new(2)}
+}
+list << {
+  :statement   => If.new(Variable.new(:x), Assign.new(:y, Number.new(1)), Assign.new(:y, Number.new(2))),
+  :environment => {:x => Boolean.new(true)}
 }
 
 list.each do |item|
