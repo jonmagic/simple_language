@@ -13,6 +13,18 @@ require_relative "small_step/statement_machine"
 require_relative "small_step/variable"
 require_relative "small_step/while"
 
+require_relative "big_step/add"
+require_relative "big_step/assign"
+require_relative "big_step/boolean"
+require_relative "big_step/do_nothing"
+require_relative "big_step/if"
+require_relative "big_step/less_than"
+require_relative "big_step/multiply"
+require_relative "big_step/number"
+require_relative "big_step/sequence"
+require_relative "big_step/variable"
+require_relative "big_step/while"
+
 list = []
 list << {:statement => Add.new(Multiply.new(Number.new(1), Number.new(2)), Multiply.new(Number.new(3), Number.new(4)))}
 list << {:statement => LessThan.new(Number.new(5), Add.new(Number.new(2), Number.new(2)))}
@@ -39,4 +51,5 @@ list << {
 
 list.each do |item|
   Machine.new(item[:statement], item[:environment]).run
+  puts "Big step result: #{item[:statement].evaluate(item[:environment])}"
 end
