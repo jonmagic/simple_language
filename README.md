@@ -5,5 +5,6 @@ A simple programming language implemented in Ruby from the book [Understanding C
 ## How to run
 
 ```
-ruby run.rb
+bundle
+bundle exec ruby run.rb
 ```
