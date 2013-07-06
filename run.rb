@@ -10,6 +10,7 @@ require_relative "multiply"
 require_relative "number"
 require_relative "sequence"
 require_relative "variable"
+require_relative "while"
 
 list = []
 # list << {:statement => Add.new(Multiply.new(Number.new(1), Number.new(2)), Multiply.new(Number.new(3), Number.new(4)))}
@@ -29,6 +30,10 @@ list << {
 list << {
   :statement   => Sequence.new(Assign.new(:x, Add.new(Number.new(1), Number.new(1))), Assign.new(:y, Add.new(Variable.new(:x), Number.new(3)))),
   :environment => {}
+}
+list << {
+  :statement   => While.new(LessThan.new(Variable.new(:x), Number.new(5)), Assign.new(:x, Multiply.new(Variable.new(:x), Number.new(3)))),
+  :environment => {:x => Number.new(1)}
 }
 
 list.each do |item|
